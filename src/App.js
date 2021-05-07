@@ -1,6 +1,6 @@
 import './App.css'
 import AddressForm from './AddressForm.js'
-import GPAComponent from './GPAComponent.js'
+// import GPAComponent from './GPAComponent.js'
 
 function App() {
   return (
