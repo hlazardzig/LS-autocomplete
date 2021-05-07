@@ -25,7 +25,7 @@ class AddressForm extends React.Component {
       street_name: '',
       street_number: '',
       city: '',
-      state: '',
+      country: '',
       zip_code: '',
       googleMapLink: '',
       lat: '',
@@ -58,6 +58,7 @@ class AddressForm extends React.Component {
         street_name: address[1].long_name,
         street_number: address[0].long_name,
         city: address[4].long_name,
+        country: address[5].long_name,
         // state: address[6]?.short_name,
         zip_code: '', // address[8]?.short_name,
         googleMapLink: addressObject.url,
@@ -121,6 +122,12 @@ class AddressForm extends React.Component {
               name={"city"}
               value={this.state.city}
               placeholder={"Stadt"}
+              onChange={this.handleChange}
+            />
+            <input 
+              name={"country"}
+              value={this.state.country}
+              placeholder={"Land"}
               onChange={this.handleChange}
             />
             <button onSubmit={this.handleSubmit}>Reset</button>
