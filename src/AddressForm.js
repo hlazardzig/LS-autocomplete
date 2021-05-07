@@ -125,15 +125,27 @@ class AddressForm extends React.Component {
             />
             <button onSubmit={this.handleSubmit}>Reset</button>
         </form>
-        <p>
-          Based on these experiments, I am afraid we will have to check the user input 
-          extensively for errors before we can use it. Additionally, the Maps Autocomplete 
-          call does not return a ZIP code. The ZIP code can only be determined in a second API call 
-          based on longitude and latitude, doubling the number of necessary API calls.
-        </p>
         <br />
         {this.state.lat? `Latitude: ${this.state.lat}` : ''}
         {this.state.lng? ` Longitude: ${this.state.lng}` : ''}
+        <p>
+          Based on these experiments, I am afraid we will have to check the user input 
+          extensively for field order (e.g. name in number field or name of city quarter
+          instead of streetname) and missing values before we can use it. Additionally,
+          the Maps Autocomplete call <strong>does not return a ZIP code</strong>. The ZIP code can only 
+          be determined in <strong>a second API call</strong> based on longitude and latitude, doubling
+          the number of necessary API calls.
+        </p>
+        <p>
+          <small><i>To be precise, it is significantly more than just a doubling. To calculate the
+          distance between partner suggestions, all we need are latitude and longitude
+          of the postal districts. These we can cache, so we do not need to retrieve 
+          latitude and longitude per user, but only once per postal district and country. 
+          Once queried, these values can then be read from the cache (or the database table
+          acting as a cache store). Since the Google API calls are chargeable, costwise this
+          also makes a clear difference</i></small>
+        </p>
+
       </div>
     )
   }
