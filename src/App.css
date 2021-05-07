@@ -1,6 +1,8 @@
 .App {
   width: 66%;
   margin: 0 auto;
+  font-size: 0.9em;
+  line-height: 150%;
 }
 
 .App-logo {

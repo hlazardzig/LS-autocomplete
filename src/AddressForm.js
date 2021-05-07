@@ -77,16 +77,16 @@ class AddressForm extends React.Component {
         <h1>Google Maps Address Autocomplete</h1>
         <ul>
           <li>
-            First enter <i>Schulterblatt 65</i> and select the corresponding entry shown in the dropdown.
+            First enter <strong><i>Schulterblatt 65</i></strong> and select the corresponding entry shown in the dropdown.
           </li>
           <li>
-            Then reset the form and enter <i>Schulterblatt</i>, without street number, and select the corresponding entry 
+            Then reset the form and enter <strong><i>Schulterblatt</i></strong>, without street number, and select the corresponding entry 
           </li>
           <li>
-            Once again reset the form and enter <i>Eppendorfer Weg</i>, without street number, and select the corresponding entry 
+            Once again reset the form and enter <strong><i>Eppendorfer Weg</i></strong>, without street number, and select the corresponding entry 
           </li>
           <li>
-            And now reset the form and enter <i>Eppendorfer Landstraße</i>, without street number, and select the corresponding entry 
+            And now reset the form and enter <strong><i>Eppendorfer Landstraße</i></strong>, without street number, and select the corresponding entry 
           </li>
         </ul>
         <form id='myForm' onSubmit={this.handleSubmit}>
@@ -112,24 +112,24 @@ class AddressForm extends React.Component {
               onChange={this.handleChange}
             />
             <input 
-              name={"city"}
-              value={this.state.city}
-              placeholder={"Stadt"}
-              onChange={this.handleChange}
-            />
-            <input 
               name={"zip_code"}
               value={this.state.zip_code}
               placeholder={"PLZ"}
               onChange={this.handleChange}
             />
+            <input 
+              name={"city"}
+              value={this.state.city}
+              placeholder={"Stadt"}
+              onChange={this.handleChange}
+            />
             <button onSubmit={this.handleSubmit}>Reset</button>
         </form>
         <p>
-          Based on these experiments, I am afraid we will have to check the user input very 
-          intensively for errors before we can use it. Additionally, the Maps Autocomplete 
-          call does not return a zip code! This can only be determined in a second API call 
-          based on longitude and latitude, thus doubling the number API calls necessary.
+          Based on these experiments, I am afraid we will have to check the user input 
+          extensively for errors before we can use it. Additionally, the Maps Autocomplete 
+          call does not return a ZIP code. The ZIP code can only be determined in a second API call 
+          based on longitude and latitude, doubling the number of necessary API calls.
         </p>
         <br />
         {this.state.lat? `Latitude: ${this.state.lat}` : ''}
