@@ -8,7 +8,7 @@ function App() {
         <AddressForm />
         <br />
         <br />
-        <GPAComponent />
+        {/* <GPAComponent /> */}
         <br />
         <br />
     </div>

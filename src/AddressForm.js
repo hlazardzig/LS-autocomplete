@@ -42,25 +42,31 @@ class AddressForm extends React.Component {
     // this.props.dispatch(addParlor(this.state))
     console.log(this.state)
     console.log(event)
+    document.getElementById("myForm").reset()
+    this.setState(this.initialState())
   }
 
   handlePlaceSelect() {
     let addressObject = this.autocomplete.getPlace()
     let address = addressObject.address_components
     console.log(addressObject)
-    console.log(addressObject.geometry.location.lat())
-    console.log(addressObject.geometry.location.lng())
+    console.log(addressObject?.geometry?.location.lat())
+    console.log(addressObject?.geometry?.location.lng())
     
-    this.setState({
-      street_name: address[1].long_name,
-      street_number: address[0].long_name,
-      city: address[4].long_name,
-      // state: address[6]?.short_name,
-      zip_code: '', // address[8]?.short_name,
-      googleMapLink: addressObject.url,
-      lat: addressObject.geometry.location.lat(),
-      lng: addressObject.geometry.location.lng()
-    })
+    if (address) {
+      this.setState({
+        street_name: address[1].long_name,
+        street_number: address[0].long_name,
+        city: address[4].long_name,
+        // state: address[6]?.short_name,
+        zip_code: '', // address[8]?.short_name,
+        googleMapLink: addressObject.url,
+        lat: addressObject.geometry.location.lat(),
+        lng: addressObject.geometry.location.lng()
+      })  
+    } else {
+      this.setState(this.initialState())
+    }
   }
 
   render() {
@@ -68,8 +74,22 @@ class AddressForm extends React.Component {
 
     return(
       <div>
-        <h1>Enter your address</h1>
-        <form onSubmit={this.handleSubmit}>
+        <h1>Google Maps Address Autocomplete</h1>
+        <ul>
+          <li>
+            First enter <i>Schulterblatt 65</i> and select the corresponding entry shown in the dropdown.
+          </li>
+          <li>
+            Then reset the form and enter <i>Schulterblatt</i>, without street number, and select the corresponding entry 
+          </li>
+          <li>
+            Once again reset the form and enter <i>Eppendorfer Weg</i>, without street number, and select the corresponding entry 
+          </li>
+          <li>
+            And now reset the form and enter <i>Eppendorfer Landstraße</i>, without street number, and select the corresponding entry 
+          </li>
+        </ul>
+        <form id='myForm' onSubmit={this.handleSubmit}>
           <input id="autocomplete"
             className="input-field"
             ref={input}
@@ -103,8 +123,14 @@ class AddressForm extends React.Component {
               placeholder={"PLZ"}
               onChange={this.handleChange}
             />
-            <button onSubmit={this.handleSubmit}>Submit</button>
+            <button onSubmit={this.handleSubmit}>Reset</button>
         </form>
+        <p>
+          Based on these experiments, I am afraid we will have to check the user input very 
+          intensively for errors before we can use it. Additionally, the Maps Autocomplete 
+          call does not return a zip code! This can only be determined in a second API call 
+          based on longitude and latitude, thus doubling the number API calls necessary.
+        </p>
         <br />
         {this.state.lat? `Latitude: ${this.state.lat}` : ''}
         {this.state.lng? ` Longitude: ${this.state.lng}` : ''}

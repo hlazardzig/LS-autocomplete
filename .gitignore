@@ -101,3 +101,7 @@ settings.json
 
 # Mac OS X file storing data for finder
 .DS_Store
+
+# for Vercel, remove package-lock.json
+package-lock.json
+
