@@ -58,13 +58,19 @@ class AddressForm extends React.Component {
         street_name: address[1].long_name,
         street_number: address[0].long_name,
         city: address[4].long_name,
-        country: address[5].long_name,
+        country: address[5] ? address[5].long_name : '',
         // state: address[6]?.short_name,
-        zip_code: '', // address[8]?.short_name,
+        zip_code: address[address.length - 1].long_name,
         googleMapLink: addressObject.url,
         lat: addressObject.geometry.location.lat(),
         lng: addressObject.geometry.location.lng()
       })  
+
+      if (address[7]) {
+        this.setState({
+          country: address[6].long_name,
+        })
+      }
     } else {
       this.setState(this.initialState())
     }
@@ -139,9 +145,9 @@ class AddressForm extends React.Component {
           Based on these experiments, I am afraid we will have to check the user input 
           extensively for field order (e.g. name in number field or name of city quarter
           instead of streetname) and missing values before we can use it. Additionally,
-          the Maps Autocomplete call <strong>does not return a ZIP code</strong>. The ZIP code can only 
-          be determined in <strong>a second API call</strong> based on longitude and latitude, doubling
-          the number of necessary API calls.
+          the Maps Autocomplete call <strong>does not reliably return a ZIP code</strong>. 
+          In these cases the ZIP code can only be determined by <strong>a second API call</strong>
+          based on longitude and latitude, doubling the number of necessary API calls.
         </p>
         <p>
           <small><i>To be precise, it is significantly more than just a doubling. To calculate the
