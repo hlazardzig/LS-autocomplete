@@ -146,8 +146,8 @@ class AddressForm extends React.Component {
           extensively for field order (e.g. name in number field or name of city quarter
           instead of streetname) and missing values before we can use it. Additionally,
           the Maps Autocomplete call <strong>does not reliably return a ZIP code</strong>. 
-          In these cases the ZIP code can only be determined by <strong>a second API call</strong>
-          based on longitude and latitude, doubling the number of necessary API calls.
+          In these cases the ZIP code can only be determined by <strong>a second API call
+          </strong> based on longitude and latitude, doubling the number of necessary API calls.
         </p>
         <p>
           <small><i>To be precise, it is significantly more than just a doubling. To calculate the
