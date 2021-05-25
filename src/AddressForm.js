@@ -55,11 +55,14 @@ class AddressForm extends React.Component {
     
     if (address) {
       this.setState({
-        street_name: address[1].long_name,
         street_number: address[0].long_name,
-        city: address[4].long_name,
-        country: address[5] ? address[5].long_name : '',
-        // state: address[6]?.short_name,
+        street_name: address[1].long_name,    // Straße, e.g. "Glashütten"
+        local_district: address[2].long_name, // Ortsteil, e.g. "Glashütten"
+        city: address[3].long_name,           // Stadt, e.g. Rickenbach
+        county: address[4].long_name,         // Kreis, e.g. "Waldshut"
+        district: address[5] ? address[5].long_name : '', // Regierungsbezirk, e.g. "Freiburg"
+        state: address[6] ? address[6].long_name : '',    // Bundesland, e.g. "Baden-Württemberg"
+        country: address[7]?.short_name,      // Land, e.g. "Deutschland"
         zip_code: address[address.length - 1].long_name,
         googleMapLink: addressObject.url,
         lat: addressObject.geometry.location.lat(),
@@ -158,17 +161,20 @@ class AddressForm extends React.Component {
           acting as a cache store). Since the Google API calls are chargeable, costwise this
           also makes a clear difference</i></small>
         </p>
-        <p style={{border: '1px solid #1a202c', padding: '1em'}}>
-          <span style={{ fontSize: 'x-large' }}>🤦🏼‍♂️</span> This is the <strong>American address format!</strong> So you have to 
-          enter the streetnumber first, and everything works perfectly! Just
+        <div style={{border: '1px solid #1a202c', padding: '1em'}}>
+          <p>
+            <span style={{ fontSize: 'x-large' }}>🤦🏼‍♂️</span> This is the <strong>American address format!</strong> So you have to 
+            enter the streetnumber first, and everything works perfectly!
+          </p>
           <ul>
             <li>Enter <strong><i>65 Schulterblatt</i></strong> and select the corresponding entry shown in the dropdown</li> 
           </ul>
-          So if we want to use this in Germany, we should ask for the street first, as usual,
-          and only <strong>entering the streetnumber</strong>, in a second formfield, 
-          <strong>triggers the Autocomplete lookup!</strong> 
-        </p>
-
+          <p>
+            So if we want to use this in Germany, we should ask for the street first, as usual,
+            and only <strong>entering the streetnumber</strong>, in a second formfield, 
+            <strong>triggers the Autocomplete lookup!</strong> 
+          </p>
+        </div>
       </div>
     )
   }
