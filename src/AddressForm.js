@@ -158,6 +158,16 @@ class AddressForm extends React.Component {
           acting as a cache store). Since the Google API calls are chargeable, costwise this
           also makes a clear difference</i></small>
         </p>
+        <p style={{border: '1px solid #1a202c', padding: '1em'}}>
+          <span style={{ fontSize: 'x-large' }}>🤦🏼‍♂️</span> This is the <strong>American address format!</strong> So you have to 
+          enter the streetnumber first, and everything works like a charm! Just
+          <ul>
+            <li>Enter <strong><i>65 Schulterblatt</i></strong> and select the corresponding entry shown in the dropdown</li> 
+          </ul>
+          So if we want to use this in Germany, we should ask for the street first, as usual,
+          and only <strong>entering the streetnumber</strong>, in a second formfield, 
+          <strong>triggers the Autocomplete lookup!</strong> 
+        </p>
 
       </div>
     )
