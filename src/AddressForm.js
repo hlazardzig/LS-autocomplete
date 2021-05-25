@@ -160,7 +160,7 @@ class AddressForm extends React.Component {
         </p>
         <p style={{border: '1px solid #1a202c', padding: '1em'}}>
           <span style={{ fontSize: 'x-large' }}>🤦🏼‍♂️</span> This is the <strong>American address format!</strong> So you have to 
-          enter the streetnumber first, and everything works like a charm! Just
+          enter the streetnumber first, and everything works perfectly! Just
           <ul>
             <li>Enter <strong><i>65 Schulterblatt</i></strong> and select the corresponding entry shown in the dropdown</li> 
           </ul>
