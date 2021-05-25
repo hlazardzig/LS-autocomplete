@@ -67,13 +67,7 @@ class AddressForm extends React.Component {
         googleMapLink: addressObject.url,
         lat: addressObject.geometry.location.lat(),
         lng: addressObject.geometry.location.lng()
-      })  
-
-      if (address[7]) {
-        this.setState({
-          country: address[6].long_name,
-        })
-      }
+      })
     } else {
       this.setState(this.initialState())
     }
