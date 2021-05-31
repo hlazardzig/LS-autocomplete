@@ -1,18 +1,16 @@
 import './App.css'
+// import { Router, Link } from "@reach/router"
+import { Router } from "@reach/router"
 import AddressForm from './AddressForm.js'
-// import GPAComponent from './GPAComponent.js'
+import { AddressNew } from './AddressNew.js'
 
-function App() {
-  return (
+export const App = () => {
+  return (    
     <div className="App">
-        <AddressForm />
-        <br />
-        <br />
-        {/* <GPAComponent /> */}
-        <br />
-        <br />
+      <Router>
+        <AddressForm path="/" />
+        <AddressNew path="/new" />
+      </Router>
     </div>
-  );
+  )
 }
-
-export default App
