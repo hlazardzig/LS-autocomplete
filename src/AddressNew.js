@@ -29,14 +29,14 @@ export const AddressNew = () => {
     // also see above
     //
     let addressObject = autocomplete.getPlace()
-    let address = addressObject.address_components
+    
     console.log(addressObject)
     console.log(addressObject?.geometry?.location.lat())
     console.log(addressObject?.geometry?.location.lng())
     
-    if (address) {
+    if (addressObject.address_components) {
       setAddress({
-        ...AnalyzeAddress(address),
+        ...AnalyzeAddress(addressObject.address_components),
         googleMapLink: addressObject.url,
         lat: addressObject.geometry.location.lat(),
         lng: addressObject.geometry.location.lng()
@@ -60,7 +60,8 @@ export const AddressNew = () => {
   React.useEffect(() => {
     //
     // runs whenever autocomplete is set (initially to null, see above) 
-    // or changed (so also just once, as soon as autocomplete is set)
+    // or changed (because of "if" condition also just once, as soon as
+    //  autocomplete is set)
     //
     if (autocomplete) {
       setAutocomplete(ac => {

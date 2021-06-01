@@ -14,6 +14,9 @@ const AnalyzeAddress = (address) => {
   let zip_code = ''
   let len = address?.length ? address.length : 0
 
+  // Notiz: array umdrehen, von hinten her lesen, breaks entfernen 
+  // let lastIndex = address?.length ? address.length -1 : -1
+
   switch(len) {
     case 1: 
       country = address[0].short_name
@@ -58,11 +61,12 @@ const AnalyzeAddress = (address) => {
       zip_code = address[6].long_name > 0 ? address[6].long_name : ''
     break
     case 8:
-      street_name = address[0].long_name
-      urban_district = address[1].long_name
-      city = address[2].long_name
-      county = address[3].long_name
-      district = address[4].long_name
+      street_number = address[0].long_name
+      street_name = address[1].long_name    // route
+      urban_district = address[2].long_name // sublocality_level1
+      city = address[3].long_name           // locality
+      county = address[4].long_name   // ?? bugs me
+      district = address[4].long_name // ?? bugs me
       state = address[5].long_name
       country = address[6].short_name
       zip_code = address[7].long_name > 0 ? address[7].long_name : ''
