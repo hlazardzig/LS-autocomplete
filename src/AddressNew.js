@@ -1,5 +1,5 @@
 import React from 'react'
-import AnalyzeAddress from './AnalyzeAddress'
+import AnalyzeGoogleAddress from './AnalyzeGoogleAddress'
 
 export const AddressNew = () => {
 
@@ -12,7 +12,7 @@ export const AddressNew = () => {
     //
     return {
       street_name: '', street_number: '',
-      zip_code: '', city: '', country: '',
+      postal_code: '', city: '', country: '',
       googleMapLink: '',
       lat: '', lng: ''
     }
@@ -30,13 +30,11 @@ export const AddressNew = () => {
     //
     let addressObject = autocomplete.getPlace()
     
-    console.log(addressObject)
-    console.log(addressObject?.geometry?.location.lat())
-    console.log(addressObject?.geometry?.location.lng())
+    // console.log(addressObject)
     
     if (addressObject.address_components) {
       setAddress({
-        ...AnalyzeAddress(addressObject.address_components),
+        ...AnalyzeGoogleAddress(addressObject.address_components),
         googleMapLink: addressObject.url,
         lat: addressObject.geometry.location.lat(),
         lng: addressObject.geometry.location.lng()
@@ -117,8 +115,8 @@ export const AddressNew = () => {
               onChange={handleChange}
             />
             <input 
-              name={"zip_code"}
-              value={address.zip_code}
+              name={"postal_code"}
+              value={address.postal_code}
               placeholder={"PLZ"}
               onChange={handleChange}
             />
