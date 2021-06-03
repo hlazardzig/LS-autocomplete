@@ -1,5 +1,6 @@
 import React from 'react'
 import AnalyzeGoogleAddress from './AnalyzeGoogleAddress'
+import AddressDisplay from './AddressDisplay'
 
 export const AddressNew = () => {
 
@@ -134,6 +135,7 @@ export const AddressNew = () => {
             />
             <button onClick={handleReset}>Reset</button>
         </form>
+        <AddressDisplay address={address} />
     </div>
   )
 }

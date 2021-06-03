@@ -8,8 +8,8 @@ export const App = () => {
   return (    
     <div className="App">
       <Router>
-        <AddressForm path="/" />
-        <AddressNew path="/new" />
+        <AddressNew path="/" />
+        <AddressForm path="/old" />
       </Router>
     </div>
   )

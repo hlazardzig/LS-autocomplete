@@ -37,7 +37,7 @@ const AnalyzeGoogleAddress = (address) => {
         state = value
       break
       case 'administrative_area_level_2':
-        // Bezirk, e.g. 'Freiburg'
+        // Regierungsbezirk, e.g. 'Freiburg'
         district = value
       break
       case 'administrative_area_level_3':
@@ -45,12 +45,14 @@ const AnalyzeGoogleAddress = (address) => {
         county = value
       break
       case 'postal_code':
+        // zip code
         postal_code = value
       break
       case 'locality':
         city = value
       break
       case 'sublocality_level_1':
+        // Stadtviertel, Ortschaft
         urban_district = value
       break
       case 'route':
