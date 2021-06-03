@@ -1,6 +1,6 @@
 import React from 'react'
 
-class AddressForm extends React.Component {
+class AddressFormClass extends React.Component {
   constructor(props) {
     super(props)
     this.state = this.initialState()
@@ -175,4 +175,4 @@ class AddressForm extends React.Component {
 
 }
 
-export default AddressForm
+export default AddressFormClass

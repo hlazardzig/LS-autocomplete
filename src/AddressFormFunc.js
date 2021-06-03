@@ -2,7 +2,7 @@ import React from 'react'
 import AnalyzeGoogleAddress from './AnalyzeGoogleAddress'
 import AddressDisplay from './AddressDisplay'
 
-export const AddressNew = () => {
+export const AddressFormFunc = () => {
 
   const initialAddress = React.useMemo(() => {
     //
@@ -91,8 +91,28 @@ export const AddressNew = () => {
   }
 
   console.log(address)
+  
   return (
     <div>
+        <h1>Google Maps Address Autocomplete</h1>
+        <ul>
+          <li>
+            First enter <strong><i>Schulterblatt 65</i></strong> and select the corresponding entry shown in the dropdown.
+          </li>
+          <li>
+            Then reset the form and enter <strong><i>Schulterblatt</i></strong>, without street number, and select the corresponding entry 
+          </li>
+          <li>
+            Once again reset the form and enter <strong><i>Eppendorfer Weg</i></strong>, without street number, and select the corresponding entry 
+          </li>
+          <li>
+            And now reset the form and enter <strong><i>Eppendorfer Landstraße</i></strong>, without street number, and select the corresponding entry 
+          </li>
+          <li>
+            Finally, reset the form and enter <strong><i>102 Eppendorfer Landstraße</i></strong>, street number first, and select the corresponding entry 
+          </li>
+        </ul>
+
         <form id='myForm'>
           <input id="autocomplete"
             className="input-field"
